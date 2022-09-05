@@ -21,16 +21,21 @@ def excel_search(file):
 
     return worksheets_list
 
-def sheet_selected():
-    return
 
-def buttonStart_pressed():
+def buttonStart_pressed2(file1, file2, sheetA, sheetB, row1A, row2A, col1A, col2A, row1B, row2B, col1B, col2B):
+    print("file name: ",file1, file2)
+    print("sheet name: ",sheetA, sheetB)
+    print("rowA: ",row1A,row2A)
+    print("colA: ",col1A,col2A)
+    print("rowB: ",row1B,row2B)
+    print("colB: ",col1B,col2B)
 
-    wb1 = openpyxl.load_workbook('D:/pythonSpace/Y220902_증빙128_코스트원-1_송장.xlsx')
-    wb2 = openpyxl.load_workbook('D:/pythonSpace/220902_동양_복사본.xlsx')
 
-    sheet1 = wb1['Sheet4']
-    sheet2 = wb2['Sheet1']
+    wb1 = openpyxl.load_workbook(file1)
+    wb2 = openpyxl.load_workbook(file2)
+
+    sheet1 = wb1[sheetA]
+    sheet2 = wb2[sheetB]
 
 
     for row in sheet1.rows:
@@ -49,7 +54,9 @@ def buttonStart_pressed():
                     # # sheet2[row_col] = row[8]                    print(row_col)
                     sheet2.cell(row = row2[4].row, column=15).value = row[8].value
 
-    wb2.save("D:/pythonSpace/result.xlsx")
+
+    result_file = file2.split('.xlsx')[0] + "(result).xlsx"
+    wb2.save(result_file)
 
 
     # print(sheet2.max_row)
