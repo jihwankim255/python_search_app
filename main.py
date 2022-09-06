@@ -8,7 +8,7 @@ import openpyxl
 import sys
 # from Utils import read_excel
 import time
-from Utils import excel_search, buttonStart_pressed2
+from Utils import sheet_search, buttonStart_pressed2
 from openpyxl.utils import get_column_letter
 
 class MyMainWindow(QMainWindow, Ui_MainWindow):
@@ -29,6 +29,16 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
         self.column1CBoxB.addItems([get_column_letter(r2b+1) for r2b in range(100)])
         self.column2CBoxB.addItems([get_column_letter(r2b+1) for r2b in range(100)])
 
+        # 테스트용
+        self.row1CBoxA.setCurrentText("2")
+        self.row2CBoxA.setCurrentText("13")
+        self.column1CBoxA.setCurrentText("B")
+        self.column2CBoxA.setCurrentText("I")
+        self.row1CBoxB.setCurrentText("8")
+        self.row2CBoxB.setCurrentText("19")
+        self.column1CBoxB.setCurrentText("E")
+        self.column2CBoxB.setCurrentText("O")
+
         # self.row1CBoxA.currentIndexChanged.connect(self.selectionChanged)
         # self.row2CBoxA.currentIndexChanged.connect(self.selectionChanged)
         # self.column1CBoxA.currentIndexChanged.connect(self.selectionChanged)
@@ -40,22 +50,15 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
         # self.column2CBoxB.currentIndexChanged.connect(self.selectionChanged)
 
     def buttonA_pressed(self):
-        # newLabel = QLabel()
-        # newLabel.setText("hello ~~")
-        # self.gridLayout.addWidget(newLabel)
         self.file1, check = QFileDialog.getOpenFileName(None,
                                                        'Select file',
                                                        './',
                                                        'Excel Files (*.xlsx)')
         if check:
-            print(self.file1)
+            # print(self.file1)
             file_name = self.file1.split('/')[-1]
             self.fileNameA.setText(file_name)
-            self.sheetNameACBox.addItems(excel_search(self.file1))
-
-
-
-
+            self.sheetNameACBox.addItems(sheet_search(self.file1))
 
     def buttonB_pressed(self):
         self.file2, check = QFileDialog.getOpenFileName(None,
@@ -63,10 +66,10 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
                                                   './',
                                                   'Excel Files (*.xlsx)')
         if check:
-            print(self.file2)
+            # print(self.file2)
             file_name = self.file2.split('/')[-1]
             self.fileNameB.setText(file_name)
-            self.sheetNameBCBox.addItems(excel_search(self.file2))
+            self.sheetNameBCBox.addItems(sheet_search(self.file2))
 
 
     # def selectionChanged(self):
@@ -74,10 +77,10 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
     #     idx = self.cbo.currentIndex()
     def buttonStart_pressed(self):
         try:
-            print("file1: ",self.file1)
-            print("file2: ",self.file2)
-
-            buttonStart_pressed2(self.file1, self.file1,self.sheetNameACBox.currentText(),self.sheetNameBCBox.currentText(), self.row1CBoxA.currentText(), self.row2CBoxA.currentText(), self.column1CBoxA.currentText(), self.column2CBoxA.currentText(),
+            # print("file1: ",self.file1)
+            # print("file2: ",self.file2)
+            print("실행 중..")
+            buttonStart_pressed2(self.file1, self.file2, self.sheetNameACBox.currentText(),self.sheetNameBCBox.currentText(), self.row1CBoxA.currentText(), self.row2CBoxA.currentText(), self.column1CBoxA.currentText(), self.column2CBoxA.currentText(),
                                  self.row1CBoxB.currentText(), self.row2CBoxB.currentText(), self.column1CBoxB.currentText(), self.column2CBoxB.currentText())
 
         except:
