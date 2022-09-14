@@ -1,14 +1,14 @@
 import xlrd
 import openpyxl
 from excelSearch import Ui_MainWindow
-from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem,QLabel,QPushButton, QFileDialog
+from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem,QLabel,QPushButton, QFileDialog, QMessageBox, QErrorMessage
 # import pandas as pd
 import openpyxl
 # from openpyxl_image_loader import SheetImageLoader
 import sys
 # from Utils import read_excel
 import time
-from Utils import sheet_search, buttonStart_pressed2
+from Utils import sheet_search, buttonStart_pressed2, result_file_list
 from openpyxl.utils import get_column_letter
 
 class MyMainWindow(QMainWindow, Ui_MainWindow):
@@ -82,13 +82,17 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
             print("실행 중..")
             buttonStart_pressed2(self.file1, self.file2, self.sheetNameACBox.currentText(),self.sheetNameBCBox.currentText(), self.row1CBoxA.currentText(), self.row2CBoxA.currentText(), self.column1CBoxA.currentText(), self.column2CBoxA.currentText(),
                                  self.row1CBoxB.currentText(), self.row2CBoxB.currentText(), self.column1CBoxB.currentText(), self.column2CBoxB.currentText())
-
+            QMessageBox.about(self, "완료", "실행이 완료되었습니다.\n" + result_file_list[0])
         except:
             print("start error")
             # alert
 
+            QErrorMessage.showMessage(self,'실행에 실패하였습니다.')
+
 
         return
+
+
 
 
 if __name__ == '__main__':

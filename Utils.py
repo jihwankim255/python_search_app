@@ -1,6 +1,7 @@
 import openpyxl
 from openpyxl.utils import get_column_letter
 
+result_file_list = []
 def sheet_search(file):
     """ 모든 시트를 찾아줌 """
     wb = openpyxl.load_workbook(file)
@@ -12,6 +13,7 @@ def sheet_search(file):
 
 
 def buttonStart_pressed2(file1, file2, sheetA, sheetB, row1A, row2A, col1A, col2A, row1B, row2B, col1B, col2B):
+    result_file_list.clear()
     print("file name: ",file1, file2)
     print("sheet name: ",sheetA, sheetB)
     print("rowA: ",row1A,row2A)
@@ -51,3 +53,6 @@ def buttonStart_pressed2(file1, file2, sheetA, sheetB, row1A, row2A, col1A, col2
     result_file = file2.split('.xlsx')[0] + "(result).xlsx"
     wb2.save(result_file)
     print(" 실행 완료 ")
+    result_file_list.append(result_file)
+
+
