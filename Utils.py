@@ -1,6 +1,9 @@
 import openpyxl
 from openpyxl.utils import get_column_letter
-
+import os
+import pandas as pd
+import time
+import xlrd
 result_file_list = []
 def sheet_search(file):
     """ 모든 시트를 찾아줌 """
@@ -14,12 +17,6 @@ def sheet_search(file):
 
 def buttonStart_pressed2(file1, file2, sheetA, sheetB, row1A, row2A, col1A, col2A, row1B, row2B, col1B, col2B):
     result_file_list.clear()
-    print("file name: ",file1, file2)
-    print("sheet name: ",sheetA, sheetB)
-    print("rowA: ",row1A,row2A)
-    print("colA: ",col1A,col2A)
-    print("rowB: ",row1B,row2B)
-    print("colB: ",col1B,col2B)
 
     wb1 = openpyxl.load_workbook(file1)
     wb2 = openpyxl.load_workbook(file2)
@@ -56,3 +53,9 @@ def buttonStart_pressed2(file1, file2, sheetA, sheetB, row1A, row2A, col1A, col2
     result_file_list.append(result_file)
 
 
+    # print("file name: ",file1, file2)
+    # print("sheet name: ",sheetA, sheetB)
+    # print("rowA: ",row1A,row2A)
+    # print("colA: ",col1A,col2A)
+    # print("rowB: ",row1B,row2B)
+    # print("colB: ",col1B,col2B)

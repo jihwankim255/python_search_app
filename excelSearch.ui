@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1084</width>
+    <height>311</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0,0">
+        <property name="leftMargin">
+         <number>50</number>
+        </property>
+        <property name="topMargin">
+         <number>50</number>
+        </property>
+        <property name="rightMargin">
+         <number>50</number>
+        </property>
+        <property name="bottomMargin">
+         <number>50</number>
+        </property>
+        <item row="3" column="3">
+         <widget class="QLabel" name="rowLabelB">
+          <property name="text">
+           <string>행 번호</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="columnLabelA">
+          <property name="text">
+           <string>열 알파벳</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="3">
+         <widget class="QLabel" name="columnLabelB">
+          <property name="text">
+           <string>열 알파벳</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="3">
+         <widget class="QLabel" name="sheetNameB">
+          <property name="text">
+           <string>시트 명</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="sheetNameA">
+          <property name="text">
+           <string>시트 명</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="4" colspan="2">
+         <widget class="QComboBox" name="sheetNameBCBox"/>
+        </item>
+        <item row="1" column="5">
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <property name="spacing">
+           <number>300</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="fileBButton">
+            <property name="text">
+             <string>파일 열기</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="2">
+         <widget class="QPushButton" name="fileAButton">
+          <property name="text">
+           <string>파일 열기</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1" colspan="2">
+         <widget class="QComboBox" name="sheetNameACBox"/>
+        </item>
+        <item row="3" column="1">
+         <widget class="QComboBox" name="row1CBoxA"/>
+        </item>
+        <item row="0" column="3" colspan="3">
+         <widget class="QLabel" name="fileBLabel">
+          <property name="text">
+           <string>입력할 파일</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0" colspan="3">
+         <widget class="QLabel" name="fileALabel">
+          <property name="text">
+           <string>읽어올 파일</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="4">
+         <widget class="QComboBox" name="row1CBoxB"/>
+        </item>
+        <item row="3" column="2">
+         <widget class="QComboBox" name="row2CBoxA"/>
+        </item>
+        <item row="4" column="2">
+         <widget class="QComboBox" name="column2CBoxA"/>
+        </item>
+        <item row="3" column="5">
+         <widget class="QComboBox" name="row2CBoxB"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="rowLabelA">
+          <property name="text">
+           <string>행 번호</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QComboBox" name="column1CBoxA"/>
+        </item>
+        <item row="4" column="4">
+         <widget class="QComboBox" name="column1CBoxB"/>
+        </item>
+        <item row="4" column="5">
+         <widget class="QComboBox" name="column2CBoxB"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="fileNameA">
+          <property name="text">
+           <string>파일 명</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="3">
+         <widget class="QLabel" name="fileNameB">
+          <property name="text">
+           <string>파일 명</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <widget class="QPushButton" name="startButton">
+        <property name="text">
+         <string>실행</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1084</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>변환</string>
+    </property>
+    <addaction name="actionSite"/>
+   </widget>
+   <addaction name="menu"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionSite">
+   <property name="text">
+    <string>Site</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+S</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
