@@ -3,7 +3,6 @@ import openpyxl
 from excelSearch import Ui_MainWindow
 from PyQt5.QtWidgets import QMainWindow, QApplication, QTableWidgetItem,QLabel,QPushButton, QFileDialog, QMessageBox, QErrorMessage
 from PyQt5.QtCore import Qt, QSettings
-import pandas as pd
 import openpyxl
 import sys
 import time
@@ -11,8 +10,8 @@ from Utils import sheet_search, buttonStart_pressed2, result_file_list
 from openpyxl.utils import get_column_letter
 import pyexcel as pe
 import webbrowser
-import xlrd
-from style import style
+
+
 class MyMainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super(MyMainWindow, self).__init__(parent)
@@ -31,17 +30,20 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
         self.column1CBoxB.addItems([get_column_letter(r2b+1) for r2b in range(1000)])
         self.column2CBoxB.addItems([get_column_letter(r2b+1) for r2b in range(1000)])
 
+        # 환경설정
+        self.settings = QSettings('config.ini', QSettings.IniFormat)
+
         # 테스트용
         try:
             print("try!")
-            self.row1CBoxA.setCurrentText(self.settings.value('row1CBoxA'))
-            self.row2CBoxA.setCurrentText(self.settings.value('row2CBoxA'))
-            self.column1CBoxA.setCurrentText(self.settings.value('column1CBoxA'))
-            self.column2CBoxA.setCurrentText(self.settings.value('column2CBoxA'))
-            self.row1CBoxB.setCurrentText(self.settings.value('row1CBoxB'))
-            self.row2CBoxB.setCurrentText(self.settings.value('row2CBoxB'))
-            self.column1CBoxB.setCurrentText(self.settings.value('column1CBoxB'))
-            self.column2CBoxB.setCurrentText(self.settings.value('column2CBoxB'))
+            self.row1CBoxA.setCurrentText(self.settings.value('cell/row1CBoxA'))
+            self.row2CBoxA.setCurrentText(self.settings.value('cell/row2CBoxA'))
+            self.column1CBoxA.setCurrentText(self.settings.value('cell/column1CBoxA'))
+            self.column2CBoxA.setCurrentText(self.settings.value('cell/column2CBoxA'))
+            self.row1CBoxB.setCurrentText(self.settings.value('cell/row1CBoxB'))
+            self.row2CBoxB.setCurrentText(self.settings.value('cell/row2CBoxB'))
+            self.column1CBoxB.setCurrentText(self.settings.value('cell/column1CBoxB'))
+            self.column2CBoxB.setCurrentText(self.settings.value('cell/column2CBoxB'))
         except:
             print("except!")
             self.row1CBoxA.setCurrentText("2")
@@ -55,8 +57,7 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
 
         self.setWindowTitle("엑셀값 연결")
 
-        # 환경설정
-        self.settings = QSettings('PythonSearch', 'cell values')
+
         # 이전 실행 값 가져오기
 
 
@@ -120,14 +121,14 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
             print("실행 중..")
             buttonStart_pressed2(self.file1, self.file2, self.sheetNameACBox.currentText(),self.sheetNameBCBox.currentText(), self.row1CBoxA.currentText(), self.row2CBoxA.currentText(), self.column1CBoxA.currentText(), self.column2CBoxA.currentText(),
                                  self.row1CBoxB.currentText(), self.row2CBoxB.currentText(), self.column1CBoxB.currentText(), self.column2CBoxB.currentText())
-            self.settings.setValue('row1CBoxA',self.row1CBoxA.currentText())
-            self.settings.setValue('row2CBoxA',self.row2CBoxA.currentText())
-            self.settings.setValue('column1CBoxA',self.column1CBoxA.currentText())
-            self.settings.setValue('column2CBoxA',self.column2CBoxA.currentText())
-            self.settings.setValue('row1CBoxB',self.row1CBoxB.currentText())
-            self.settings.setValue('row2CBoxB',self.row2CBoxB.currentText())
-            self.settings.setValue('column1CBoxB',self.column1CBoxB.currentText())
-            self.settings.setValue('column2CBoxB',self.column2CBoxB.currentText())
+            # self.settings.setValue('row1CBoxA', self.row1CBoxA.currentText())
+            # self.settings.setValue('row2CBoxA', self.row2CBoxA.currentText())
+            # self.settings.setValue('column1CBoxA', self.column1CBoxA.currentText())
+            # self.settings.setValue('column2CBoxA', self.column2CBoxA.currentText())
+            # self.settings.setValue('row1CBoxB', self.row1CBoxB.currentText())
+            # self.settings.setValue('row2CBoxB', self.row2CBoxB.currentText())
+            # self.settings.setValue('column1CBoxB', self.column1CBoxB.currentText())
+            # self.settings.setValue('column2CBoxB', self.column2CBoxB.currentText())
             QMessageBox.about(self, "완료", "실행이 완료되었습니다.\n" + result_file_list[0])
         except:
             print("start error")
@@ -137,13 +138,21 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
         return
 
 
-    # def closeEvent(self, event):
-    #     print("Closed", event)
+    def closeEvent(self, event):
+        print("Closed", event)
+        self.settings.setValue('cell/row1CBoxA', self.row1CBoxA.currentText())
+        self.settings.setValue('cell/row2CBoxA', self.row2CBoxA.currentText())
+        self.settings.setValue('cell/column1CBoxA', self.column1CBoxA.currentText())
+        self.settings.setValue('cell/column2CBoxA', self.column2CBoxA.currentText())
+        self.settings.setValue('cell/row1CBoxB', self.row1CBoxB.currentText())
+        self.settings.setValue('cell/row2CBoxB', self.row2CBoxB.currentText())
+        self.settings.setValue('cell/column1CBoxB', self.column1CBoxB.currentText())
+        self.settings.setValue('cell/column2CBoxB', self.column2CBoxB.currentText())
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     # app.setStyleSheet(style)
     ex = MyMainWindow()
     ex.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
 

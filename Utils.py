@@ -1,7 +1,6 @@
 import openpyxl
 from openpyxl.utils import get_column_letter
 import os
-import pandas as pd
 import time
 import xlrd
 result_file_list = []
